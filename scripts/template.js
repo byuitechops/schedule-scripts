@@ -17,12 +17,13 @@ function setWeeksFromTemplate() {
     var sheetsNotIncluded = globals.dontInclude;
     var rangeList = globals.editRange;
     var startingWeek = Browser.inputBox('What week to start on?');
-    if (startingWeek.length >= 2) startingWeek = ss.getSheetByName(startingWeek);
+    if (startingWeek.length > 2) startingWeek = ss.getSheetByName(startingWeek);
     else startingWeek = ss.getSheetByName('Week ' + startingWeek);
     //    Logger.log(startingWeek.getName().split(' ')[1]);
 
 
     sheets.forEach(function (sheet) {
+      Logger.log(sheet);
         if (parseInt(sheet.getName().split(' ')[1]) < parseInt(startingWeek.getName().split(' ')[1])) {
             sheetsNotIncluded.push(sheet.getName());
         }
